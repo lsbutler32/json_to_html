@@ -3,7 +3,6 @@ const json_obj = JSON.parse(document.body.textContent)
 function jsonToHtml(json_obj) {
         for(var key in json_obj) {
             if(json_obj[key] instanceof Object) {
-                document.write("<div>");
                 jsonToHtml(json_obj[key]);
             } else {
                 document.write(json_obj[key]+"<div>");
