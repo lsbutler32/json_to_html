@@ -1,16 +1,19 @@
 const json_obj = JSON.parse(document.body.textContent)
+let html_string = ''
 
 function jsonToHtml(json_obj) {
         for(var key in json_obj) {
             if(json_obj[key] instanceof Object) {
                 jsonToHtml(json_obj[key]);
             } else {
-                document.write(json_obj[key]+"<div>");
+                html_string += `<div class=${key}> ${json_obj[key]} </div>`
                 
             };
         }
     }
 jsonToHtml(json_obj)
+
+document.write(html_string)
 
 /* basic approach to the problem, call a recursive function that keeps checking if the value at that key is an object, if it is keep parsing through, if it isn't 
 write the value between a div
